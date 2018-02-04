@@ -46,7 +46,6 @@
          "oldname:newname", one per entry. -->
     <string-array name="config_displayModeMappings" translatable="false">
         <item>Standard:standard</item>
-        <item>Vibrant:dynamic</item>
         <item>Comfort:astronomy</item>
     </string-array>
 
@@ -54,6 +53,6 @@
     <integer name="config_defaultLiveDisplayMode">0</integer>
 
     <!-- Should we filter any display modes which are unampped? -->
-    <bool name="config_filterDisplayModes">false</bool>
+    <bool name="config_filterDisplayModes">true</bool>
 
 </resources>
