@@ -160,6 +160,9 @@ TARGET_ENABLE_MEDIADRM_64 := true
 # DT2W
 TARGET_TAP_TO_WAKE_NODE := "/sys/android_touch/doubletap2wake"
 
+# exfat
+TARGET_EXFAT_DRIVER := exfat
+
 # FM
 BOARD_HAVE_FM_RADIO := true
 BOARD_HAVE_QCOM_FM := true
