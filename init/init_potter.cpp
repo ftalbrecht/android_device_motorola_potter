@@ -75,8 +75,9 @@ void vendor_load_properties()
     if (platform != ANDROID_TARGET)
         return;
 
+    // sku
     std::string sku = android::base::GetProperty("ro.boot.hardware.sku", "");
-    property_set("ro.product.model", sku.c_str());
+    property_override_dual("ro.product.model", "ro.vendor.product.model", sku.c_str());
 
     // fingerprint
     property_override("ro.build.description", "potter-7.0/NPNS25.137-33-11/11:user/release-keys");
