@@ -53,6 +53,9 @@ TARGET_USES_64_BIT_BINDER := true
 # Asserts
 TARGET_OTA_ASSERT_DEVICE := potter,potter_retail
 
+# Build with sdclang
+TARGET_USE_SDCLANG := true
+
 # GPS
 TARGET_NO_RPC := true
 USE_DEVICE_SPECIFIC_GPS := true
