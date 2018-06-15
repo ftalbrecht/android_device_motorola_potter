@@ -240,6 +240,9 @@ MOT_SENSOR_HUB_FEATURE_GR := true
 
 TARGET_ENABLE_MEDIADRM_64 := true
 
+# Thermal
+USE_DEVICE_SPECIFIC_THERMAL := true
+
 # Wifi
 PRODUCT_VENDOR_MOVE_ENABLED      := true
 BOARD_HAS_QCOM_WLAN              := true
