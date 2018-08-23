@@ -249,6 +249,9 @@ TARGET_LD_SHIM_LIBS := \
 # Thermal
 USE_DEVICE_SPECIFIC_THERMAL := true
 
+# VNDK
+PRODUCT_USE_VNDK_OVERRIDE := false
+
 # Wifi
 PRODUCT_VENDOR_MOVE_ENABLED      := true
 BOARD_HAS_QCOM_WLAN              := true
