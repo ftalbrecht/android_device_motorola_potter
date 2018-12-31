@@ -71,6 +71,7 @@ PRODUCT_PACKAGES += \
     audio.a2dp.default \
     audio.usb.default \
     audio.r_submix.default \
+    libaacwrapper \
     libaudio-resampler \
     libshim_adsp \
     libtinycompress \
@@ -419,6 +420,10 @@ PRODUCT_PACKAGES += \
     tcpdump \
     wcnss_service \
     libwpa_client
+
+# Wi-Fi Display
+PRODUCT_BOOT_JARS += \
+    WfdCommon
 
 # Wifi Symlinks
 PRODUCT_PACKAGES += \
