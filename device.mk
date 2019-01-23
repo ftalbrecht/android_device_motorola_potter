@@ -111,15 +111,15 @@ PRODUCT_PACKAGES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    libbson \
-    SnapdragonCamera2 \
-    libgui_vendor \
-    camera.device@3.2-impl \
     android.hardware.camera.provider@2.4-impl \
-    vendor.qti.hardware.camera.device@1.0 \
-    vendor.qti.hardware.camera.device@1.0_vendor \
+    camera.device@1.0-impl \
+    camera.device@3.2-impl \
+    libbson \
     libjustshoot_shim \
-    libshim_buffer
+    libshim_buffer \
+    Snap \
+    vendor.qti.hardware.camera.device@1.0 \
+    vendor.qti.hardware.camera.device@1.0_vendor
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/camera/msm8953_mot_potter_camera.xml:system/etc/camera/msm8953_mot_potter_camera.xml \
