@@ -419,6 +419,10 @@ on post-fs-data
     mkdir /dev/socket/location/mq 0770 gps gps
     mkdir /dev/socket/location/xtra 0770 gps gps
 
+    #Create directory from IMS services
+    mkdir /data/shared 0755
+    chown system system /data/shared
+
     # Create /data/vendor/time folder for time-services
     mkdir /data/vendor/time/ 0700 system system
 
@@ -453,6 +457,10 @@ on post-fs-data
 
     # Create vpp directory
     mkdir /data/vendor/vpp 0770 media media
+
+    #Create FM dir for patchdownloader
+    mkdir /data/vendor/fm 0770 system system
+    chmod 0770 /data/vendor/fm
 
     setprop vold.post_fs_data_done 1
     
