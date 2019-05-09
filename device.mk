@@ -67,8 +67,9 @@ PRODUCT_AAPT_CONFIG := normal
 
 # HIDL
 PRODUCT_PACKAGES += \
+    android.hidl.base@1.0 \
     android.hidl.manager@1.0 \
-    android.hidl.base@1.0
+    android.hidl.manager-V1.0-java
 
 # Audio
 PRODUCT_PACKAGES += \
@@ -167,8 +168,8 @@ PRODUCT_PACKAGES += \
     vendor.display.config@1.0_vendor
 
 PRODUCT_PACKAGES += \
-    vendor.display.color@1.0-service \
-    vendor.display.color@1.0-impl
+    vendor.display.color@1.0-impl \
+    vendor.display.color@1.0-service
 
 PRODUCT_PACKAGES += android.hardware.media.omx
 
@@ -229,8 +230,8 @@ PRODUCT_COPY_FILES += \
 
 # Keymaster HAL
 PRODUCT_PACKAGES += \
-                    android.hardware.keymaster@3.0-impl \
-                    android.hardware.keymaster@3.0-service
+    android.hardware.keymaster@3.0-impl \
+    android.hardware.keymaster@3.0-service
 # IDC
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/idc/uinput-fpc.idc:system/usr/idc/uinput-fpc.idc
@@ -247,13 +248,9 @@ PRODUCT_PACKAGES += \
 
 # DRM
 PRODUCT_PACKAGES += \
-    android.hardware.drm@1.0-service \
     android.hardware.drm@1.0-impl \
+    android.hardware.drm@1.0-service \
     android.hardware.drm@1.0-service.widevine
-
-#PRODUCT_COPY_FILES += \
-#    $(LOCAL_PATH)/configs/qdcm_calib_data_mipi_mot_vid_boe_1080p_520.xml:system/vendor/etc/qdcm_calib_data_mipi_mot_vid_boe_1080p_520.xml \
-#    $(LOCAL_PATH)/configs/qdcm_calib_data_mipi_mot_vid_tianma_1080p_520.xml:system/vendor/etc/qdcm_calib_data_mipi_mot_vid_tianma_1080p_520.xml
 
 # Media
 PRODUCT_PACKAGES += \
@@ -327,7 +324,7 @@ PRODUCT_PACKAGES += \
     init.mmi.laser.sh \
     init.mmi.rc \
     init.mmi.usb.rc \
-    init.qcom.rc \
+    init.qcom.rc
 
 PRODUCT_COPY_FILES += \
      $(LOCAL_PATH)/rootdir/etc/ueventd.qcom.rc:system/vendor/ueventd.rc
@@ -347,11 +344,8 @@ PRODUCT_PACKAGES += \
     libprotobuf-cpp-full \
     libxml2 \
     libshim_ril \
+    android.hardware.radio@1.0 \
     android.hardware.radio.config@1.0
-
-#RIL
-PRODUCT_PACKAGES += \
-    android.hardware.radio@1.0
 
 # Seccomp policy
 PRODUCT_COPY_FILES += \
@@ -364,9 +358,7 @@ PRODUCT_PACKAGES += \
     telephony-ext
 
 PRODUCT_BOOT_JARS += \
-    telephony-ext \
-    QPerformance \
-    UxPerformance
+    telephony-ext
 
 # Sensors
 PRODUCT_COPY_FILES += \
@@ -421,9 +413,10 @@ PRODUCT_PACKAGES += \
     Launcher3
 
 #Thermal
-PRODUCT_PACKAGES += android.hardware.thermal@1.0-impl \
-                    android.hardware.thermal@1.0-service \
-                    thermal.msm8953
+PRODUCT_PACKAGES += \
+    android.hardware.thermal@1.0-impl \
+    android.hardware.thermal@1.0-service \
+    thermal.msm8953
 
 PRODUCT_PACKAGES += \
     libcurl \
@@ -458,12 +451,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/zaf/zaf_mot_imx362.json:system/etc/zaf/zaf_mot_imx362.json \
     $(LOCAL_PATH)/configs/zaf/zaf_mot_s5k2l7.json:system/etc/zaf/zaf_mot_s5k2l7.json
-
-# TEMP FIX
-PRODUCT_PACKAGES += \
-    android.hidl.base@1.0 \
-    android.hidl.manager@1.0 \
-    android.hidl.manager-V1.0-java
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 
