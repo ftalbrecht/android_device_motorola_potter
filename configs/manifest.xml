@@ -10,7 +10,7 @@
     </hal>
     <hal format="hidl">
         <name>android.hardware.audio.effect</name>
-        <transport>hwbinder</transport>
+        <transport arch="32+64">passthrough</transport>
         <version>2.0</version>
         <interface>
             <name>IEffectsFactory</name>
@@ -214,15 +214,6 @@
         </interface>
     </hal>
     <hal format="hidl">
-        <name>android.hardware.biometrics.fingerprint</name>
-        <transport>hwbinder</transport>
-        <version>2.1</version>
-        <interface>
-            <name>IBiometricsFingerprint</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl">
         <name>vendor.display.config</name>
         <transport>hwbinder</transport>
         <version>1.1</version>
@@ -328,7 +319,6 @@
     <hal format="hidl">
         <name>vendor.qti.hardware.radio.qcrilhook</name>
         <transport>hwbinder</transport>
-        <impl level="generic"></impl>
         <version>1.0</version>
         <interface>
             <name>IQtiOemHook</name>
@@ -411,13 +401,13 @@
         </interface>
     </hal>
     <hal format="hidl">
-	<name>android.hardware.usb</name>
-	<transport>hwbinder</transport>
-	<version>1.0</version>
-	<interface>
-		<name>IUsb</name>
-		<instance>default</instance>
-	</interface>
+        <name>android.hardware.usb</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IUsb</name>
+            <instance>default</instance>
+        </interface>
     </hal>
     <hal format="hidl">
         <name>android.hardware.vibrator</name>
@@ -465,6 +455,15 @@
         </interface>
     </hal>
     <hal format="hidl">
+        <name>vendor.qti.esepowermanager</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IEsePowerManager</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl">
         <name>vendor.qti.imsrtpservice</name>
         <transport>hwbinder</transport>
         <version>1.0</version>
@@ -506,15 +505,6 @@
         <version>1.0</version>
         <interface>
             <name>IMemtrack</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl">
-        <name>android.hardware.sensors</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>ISensors</name>
             <instance>default</instance>
         </interface>
     </hal>
