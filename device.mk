@@ -65,14 +65,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 PRODUCT_AAPT_CONFIG := normal
 
-# HIDL
-PRODUCT_PACKAGES += \
-    android.hidl.base@1.0 \
-    android.hidl.manager@1.0 \
-    android.hidl.manager-V1.0-java
-
 # Audio
 PRODUCT_PACKAGES += \
+    audiod \
     audio.primary.msm8953 \
     audio.a2dp.default \
     audio.usb.default \
@@ -80,14 +75,13 @@ PRODUCT_PACKAGES += \
     libaacwrapper \
     libaudio-resampler \
     libshim_adsp \
-    libtinycompress \
-    audiod
+    libtinycompress
 
 PRODUCT_PACKAGES += \
+    libqcompostprocbundle \
     libqcomvisualizer \
     libqcomvoiceprocessing \
-    libqcomvoiceprocessingdescriptors \
-    libqcompostprocbundle
+    libqcomvoiceprocessingdescriptors
 
 PRODUCT_PACKAGES += \
     android.hardware.audio@2.0-impl \
@@ -108,10 +102,6 @@ PRODUCT_COPY_FILES +=  \
 # Bluetooth
 PRODUCT_PACKAGES += \
     libbt-vendor
-
-# Browser
-PRODUCT_PACKAGES += \
-    Gello
 
 # Camera
 PRODUCT_PACKAGES += \
@@ -147,10 +137,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/gps/etc/xtwifi.conf:system/vendor/etc/xtwifi.conf \
     $(LOCAL_PATH)/gps/etc/cacert_location.pem:system/vendor/etc/cacert_location.pem
 
-# LineageActions
-PRODUCT_PACKAGES += \
-    LineageActions
-
 # Display
 PRODUCT_PACKAGES += \
     copybit.msm8953 \
@@ -178,19 +164,18 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += android.hardware.media.omx
 
-# RenderScript HAL
-PRODUCT_PACKAGES += \
-    android.hardware.renderscript@1.0-impl
-
 # DRM
+PRODUCT_PACKAGES += \
+    android.hardware.drm@1.0-impl \
+    android.hardware.drm@1.0-service \
+    android.hardware.drm@1.0-service.widevine
+
 PRODUCT_PACKAGES += \
     libprotobuf-cpp-lite
 
-# limit dex2oat threads to improve thermals
-PRODUCT_PROPERTY_OVERRIDES += \
-    dalvik.vm.boot-dex2oat-threads=8 \
-    dalvik.vm.dex2oat-threads=8 \
-    dalvik.vm.image-dex2oat-threads=8
+# Display Calibration
+PRODUCT_PACKAGES += \
+    vendor.lineage.livedisplay@2.0-service-sdm
 
 # Ebtables
 PRODUCT_PACKAGES += \
@@ -205,8 +190,7 @@ PRODUCT_PACKAGES += \
 # FM
 PRODUCT_PACKAGES += \
     FMRadio \
-    libfmjni \
-    init.qti.fm.sh
+    libfmjni
 
 # Gatekeeper HAL
 PRODUCT_PACKAGES += \
@@ -222,9 +206,27 @@ PRODUCT_PACKAGES += \
     libqsap_sdk \
     libqsap_shim
 
-# health
+# Health
 PRODUCT_PACKAGES += \
     android.hardware.health@2.0-service
+
+# HIDL
+PRODUCT_PACKAGES += \
+    android.hidl.base@1.0 \
+    android.hidl.manager@1.0 \
+    android.hidl.manager-V1.0-java
+
+# IDC
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/idc/uinput-fpc.idc:system/usr/idc/uinput-fpc.idc
+
+# IMS
+PRODUCT_PACKAGES += \
+    ims-ext-common \
+    telephony-ext
+
+PRODUCT_BOOT_JARS += \
+    telephony-ext
 
 # IRSC
 PRODUCT_COPY_FILES += \
@@ -243,9 +245,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.keymaster@3.0-impl \
     android.hardware.keymaster@3.0-service
-# IDC
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/idc/uinput-fpc.idc:system/usr/idc/uinput-fpc.idc
 
 # Lights
 PRODUCT_PACKAGES += \
@@ -253,15 +252,15 @@ PRODUCT_PACKAGES += \
     android.hardware.light@2.0-service \
     lights.msm8953
 
-# Display Calibration
-PRODUCT_PACKAGES += \
-    vendor.lineage.livedisplay@2.0-service-sdm
+# Limit dex2oat threads to improve thermals
+PRODUCT_PROPERTY_OVERRIDES += \
+    dalvik.vm.boot-dex2oat-threads=8 \
+    dalvik.vm.dex2oat-threads=8 \
+    dalvik.vm.image-dex2oat-threads=8
 
-# DRM
+# LineageActions
 PRODUCT_PACKAGES += \
-    android.hardware.drm@1.0-impl \
-    android.hardware.drm@1.0-service \
-    android.hardware.drm@1.0-service.widevine
+    LineageActions
 
 # Media
 PRODUCT_PACKAGES += \
@@ -289,19 +288,19 @@ PRODUCT_COPY_FILES += \
 # Netutils
 PRODUCT_PACKAGES += \
     android.system.net.netd@1.0 \
-    netutils-wrapper-1.0 \
     libandroid_net \
-    libandroid_net_32
+    libandroid_net_32 \
+    netutils-wrapper-1.0
 
 PRODUCT_PACKAGES += \
-    libnfc \
+    android.hardware.nfc@1.1-service \
     com.android.nfc_extras \
+    libnfc \
     NfcNci \
     nqnfcee_access.xml \
     nqnfcse_access.xml \
     SecureElement \
-    Tag \
-    android.hardware.nfc@1.1-service
+    Tag
 
 # OMX
 PRODUCT_PACKAGES += \
@@ -326,7 +325,6 @@ PRODUCT_COPY_FILES += \
 
 # Ramdisk
 PRODUCT_PACKAGES += \
-    init.qcom.fm.sh \
     wlan_carrier_bin.sh
 
 PRODUCT_PACKAGES += \
@@ -338,12 +336,16 @@ PRODUCT_PACKAGES += \
     init.qcom.rc
 
 PRODUCT_COPY_FILES += \
-     $(LOCAL_PATH)/rootdir/etc/ueventd.qcom.rc:system/vendor/ueventd.rc
+    $(LOCAL_PATH)/rootdir/etc/ueventd.qcom.rc:system/vendor/ueventd.rc
+
+# RenderScript HAL
+PRODUCT_PACKAGES += \
+    android.hardware.renderscript@1.0-impl
 
 # Powerhint configuration file
 PRODUCT_COPY_FILES += \
-     $(LOCAL_PATH)/configs/powerhint.xml:system/etc/powerhint.xml \
-     $(LOCAL_PATH)/configs/perfboostsconfig.xml:$(TARGET_COPY_OUT_VENDOR)/etc/perf/perfboostsconfig.xml
+    $(LOCAL_PATH)/configs/powerhint.xml:system/etc/powerhint.xml \
+    $(LOCAL_PATH)/configs/perfboostsconfig.xml:$(TARGET_COPY_OUT_VENDOR)/etc/perf/perfboostsconfig.xml
 
 # Releasetools script
 PRODUCT_COPY_FILES += \
@@ -361,14 +363,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/seccomp_policy/mediacodec.policy:system/vendor/etc/seccomp_policy/mediacodec.policy \
     $(LOCAL_PATH)/seccomp_policy/mediaextractor.policy:system/vendor/etc/seccomp_policy/mediaextractor.policy
-
-# IMS
-PRODUCT_PACKAGES += \
-    ims-ext-common \
-    telephony-ext
-
-PRODUCT_BOOT_JARS += \
-    telephony-ext
 
 # Sensors
 PRODUCT_COPY_FILES += \
@@ -391,6 +385,11 @@ PRODUCT_PACKAGES += \
     libqsap_shim
 
 # Thermal
+PRODUCT_PACKAGES += \
+    android.hardware.thermal@1.0-impl \
+    android.hardware.thermal@1.0-service \
+    thermal.msm8953
+
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/thermal-engine-potter.conf:system/vendor/etc/thermal-engine.conf
 
@@ -422,16 +421,6 @@ PRODUCT_PACKAGES += \
     wpa_supplicant \
     wpa_supplicant.conf
 
-# Launcher3
-PRODUCT_PACKAGES += \
-    Launcher3
-
-#Thermal
-PRODUCT_PACKAGES += \
-    android.hardware.thermal@1.0-impl \
-    android.hardware.thermal@1.0-service \
-    thermal.msm8953
-
 PRODUCT_PACKAGES += \
     libcurl \
     libQWiFiSoftApCfg \
@@ -461,6 +450,9 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wifi/WCNSS_qcom_cfg.ini:$(TARGET_COPY_OUT_VENDOR)/firmware/wlan/prima/WCNSS_qcom_cfg.ini \
     $(LOCAL_PATH)/wifi/WCNSS_qcom_cfg.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/WCNSS_qcom_cfg.ini
 
+PRODUCT_CFI_INCLUDE_PATHS += \
+    hardware/qcom/wlan-caf/qcwcn/wpa_supplicant_8_lib
+
 # ZAF
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/zaf/zaf_mot_imx362.json:system/etc/zaf/zaf_mot_imx362.json \
@@ -471,6 +463,3 @@ PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 PRODUCT_GMS_CLIENTID_BASE := android-motorola
 
 PRODUCT_VENDOR_KERNEL_HEADERS := hardware/qcom/msm8996/kernel-headers
-
-PRODUCT_CFI_INCLUDE_PATHS += \
-    hardware/qcom/wlan-caf/qcwcn/wpa_supplicant_8_lib
